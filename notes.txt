@@ -1,0 +1,21 @@
+✅ 1. Explain the Logic in Simple Points
+🧠 How the Game Works (Step-by-Step):
+User clicks a card → flipCard() is triggered.
+
+If it's the first card, it's stored in firstCard, and hasFlippedCard is set to true.
+
+On second click, it stores the card as secondCard, and checks:
+
+If firstCard.dataset.framework === secondCard.dataset.framework
+
+If they match:
+
+Both cards stay flipped (event listeners removed).
+
+If they don’t match:
+
+Cards flip back after 1.5 seconds (setTimeout).
+
+resetBoard() resets all temporary states.
+
+A shuffle() function randomly assigns CSS order to mix up cards each load.

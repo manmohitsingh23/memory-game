@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: sans-serif;
+  background: #111827;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+body.dark {
+  background: #fff;
+  color: #000;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 640px;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.memory-game {
+  width: 640px;
+  height: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.memory-card.matched {
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #3b82f6;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  padding: 20px;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}

@@ -1,0 +1,84 @@
+🎯 Interview Explanation: How Flip Animation Works
+✅ 1. Overall Principle
+The card has two sides:
+
+A front face (the image shown when flipped)
+
+A back face (what you see initially)
+
+We simulate a 3D flip effect using CSS transform: rotateY(180deg) and backface-visibility.
+
+✅ 2. HTML Structure (Core to the Flip)
+Each .memory-card contains two images:
+
+html
+Copy
+Edit
+<div class="memory-card">
+  <img class="front-face" src="..." />
+  <img class="back-face" src="..." />
+</div>
+Both faces are absolutely positioned on top of each other.
+
+The card container (.memory-card) acts as the "3D cube" that we rotate.
+
+✅ 3. CSS Key Concepts
+🧩 .memory-card acts as the flippable container:
+css
+Copy
+Edit
+.memory-card {
+  transform-style: preserve-3d; /* Allow children to be transformed in 3D */
+  transition: transform 0.5s;   /* Smooth flip animation */
+}
+🎴 Front and back faces:
+css
+Copy
+Edit
+.front-face,
+.back-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hides the back when not facing viewer */
+}
+🧲 Flip logic:
+css
+Copy
+Edit
+.memory-card.flip {
+  transform: rotateY(180deg);  /* This is what flips the card */
+}
+🔁 Front face is already rotated:
+css
+Copy
+Edit
+.front-face {
+  transform: rotateY(180deg);  /* Pre-rotated so when card flips, it faces you */
+}
+🧠 Interview Summary Points (To Say Verbally):
+The flipping animation is achieved through 3D transforms using rotateY(180deg) on the card container. Each card has two absolutely positioned child elements (front and back). The front face is pre-rotated 180 degrees, and backface-visibility: hidden ensures only the correct face is visible at a time. When the card is flipped, we rotate the whole container, bringing the front face into view.
+
+✅ Bonus: Key Terms to Drop in Interviews
+Concept	Explanation
+transform-style	Enables child elements to render in 3D
+rotateY()	Rotates around Y-axis (flip effect)
+backface-visibility	Hides the reverse side of an element
+transition	Adds smooth animation
+preserve-3d	Prevents flattening of children
+
+🔎 Interview Tip:
+If asked "Can you make this flip vertically instead of horizontally?"
+
+➡️ Just change:
+
+css
+Copy
+Edit
+transform: rotateY(180deg);
+to:
+
+css
+Copy
+Edit
+transform: rotateX(180deg);
